@@ -1,9 +1,9 @@
 # Решения задач проекта Diofant.ru
 
-Все задачи запускаются с помощью `make`.
+[![Build Status](https://travis-ci.org/vslinko/diofant.png?branch=master)](https://travis-ci.org/vslinko/diofant)
 
-Список зависимостей:
+## Использование
 
-* gmp
-* mpfr
-* gmpy
+* Проверить все решения: `./diofant`
+* Узнать решение задачи: `./diofant -p 1059`
+* Выполнить решение задачи: `./diofant -rp 1059`
