@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+var spawn = require('child_process').spawn,
+    argv = require('optimist').argv;
+
+
+var solution = function (id, run) {
+    var problem = require('./problems/' + id);
+    var result = run ? problem.solution() : problem.result;
+
+    console.log('Problem #' + id + ' answer is ' + result);
+};
+
+var test = function () {
+    var mocha = spawn(__dirname + '/node_modules/.bin/mocha', ['-R', 'spec'], {
+        cwd: __dirname
+    });
+
+    mocha.stdout.pipe(process.stdout);
+};
+
+
+if (argv.p) {
+    solution(argv.p, argv.r);
+} else {
+    test();
+}

@@ -1,0 +1,21 @@
+{
+    "name": "vslinko-diofant",
+    "version": "0.0.0",
+    "description": "Решения задач проекта Diofant.ru",
+    "keywords": ["diofant.ru"],
+    "author": {
+        "name": "Vyacheslav Slinko",
+        "email": "vyacheslav.slinko@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/vslinko/diofant.git"
+    },
+    "scripts": {
+        "test": "./diofant"
+    },
+    "dependencies": {
+        "optimist": "0.3.x",
+        "mocha": "1.7.x"
+    }
+}
