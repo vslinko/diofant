@@ -1,26 +1,32 @@
-#!/usr/bin/env node
-var spawn = require('child_process').spawn,
-    argv = require('optimist').argv;
+#!/usr/bin/env coffee
+spawn = require("child_process").spawn
+argv = require("optimist").argv
+path = require "path"
+fs = require "fs"
 
 
-var solution = function (id, run) {
-    var problem = require('./problems/' + id);
-    var result = run ? problem.solution() : problem.result;
-
-    console.log('Problem #' + id + ' answer is ' + result);
-};
-
-var test = function () {
-    var mocha = spawn(__dirname + '/node_modules/.bin/mocha', ['-R', 'spec'], {
-        cwd: __dirname
-    });
-
-    mocha.stdout.pipe(process.stdout);
-};
+problemResult = (problem) ->
+  problem = require path.join __dirname, "src", String problem
+  problem.result
 
 
-if (argv.p) {
-    solution(argv.p, argv.r);
-} else {
-    test();
-}
+if argv.result
+  if argv.problem
+    console.log problemResult argv.problem
+
+  else
+    files = fs.readdirSync path.join __dirname, "src"
+
+    for file in files
+      matches = /^(\d+)\.coffee$/.exec file
+
+      if matches
+        problem = matches[1]
+        console.log "#{problem}: #{problemResult problem}"
+
+else
+  if argv.problem
+    process.env.GREP = "##{argv.problem} "
+
+  mocha = spawn "grunt", ["simplemocha"], cwd: __dirname
+  mocha.stdout.pipe process.stdout
