@@ -1,7 +1,5 @@
 # Решения задач проекта Diofant.ru
 
-[![Build Status](https://travis-ci.org/vslinko/diofant.png?branch=master)](https://travis-ci.org/vslinko/diofant)
-
 ## Установка
 
 Перед установкой решений необходимо установить libgmp.
@@ -23,12 +21,11 @@ brew install gmp
 ```shell
 git clone https://github.com/vslinko/diofant.git
 cd diofant
-npm install
 ```
 
 ## Использование
 
-* Проверить все задачи: `./diofant`
-* Проверить задачу: `./diofant --problem 1059`
-* Узнать решение всех задач: `./diofant --result`
-* Узнать решение задачи: `./diofant --result --problem 1059`
+* Проверить все задачи: `make`
+* Проверить задачу: `make problems/1059`
+* Узнать решение всех задач: `make answers`
+* Узнать решение задачи: `make problems/1059/answer.txt`
